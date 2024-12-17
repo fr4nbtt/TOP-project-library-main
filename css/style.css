@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap");
+
+:root {
+  font-family: Merriweather, serif;
+}
+
+main {
+  padding: 1.25rem;
+  background-color: #d8b6a4;
+  min-height: 100vh;
+}
+
+#library-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.book-card {
+  background-color: #eeebdd;
+  padding: 1rem;
+  border-top: 5px solid #630000;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.book-card h3 {
+  margin: 0;
+}
+
+/* Current Color Palette 
+000000
+630000
+D8B6A4
+EEEBDD
+*/
