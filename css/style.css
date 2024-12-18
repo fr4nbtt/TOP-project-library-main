@@ -26,6 +26,7 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
+  aspect-ratio: 16 / 9;
 }
 
 .book-card h3 {

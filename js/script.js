@@ -35,7 +35,15 @@ function displayBooks() {
         <h3>${book.title}</h3>
         <p>Author: ${book.author}</p>
         <p>Pages: ${book.pages}</p>
-        <p>Read: ${book.read ? "Yes" : "No"}</p>
+                    <label for="read-status-${book.title}">Status:</label>
+         <select>id="read-status-${book.title}">
+                <option value="read" ${
+                  book.read ? "selected" : ""
+                }>Read</option>
+                <option value="not-read" ${
+                  !book.read ? "selected" : ""
+                }>Not Read</option>
+            </select>
       `;
 
     // Append to the library container
