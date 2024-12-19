@@ -7,21 +7,22 @@ const libraryContainer = document.querySelector("#library-container");
 const myLibrary = [];
 
 /* Book Constructor function */
-function Book(title, author, pages, read) {
+function Book(title, author, pages, publicationYear, readStatus) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.publicationYear = publicationYear;
+  this.readStatus = readStatus;
 }
 
-/*  */
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+/* Function to add a book to the library */
+function addBookToLibrary(title, author, pages, publicationYear, readStatus) {
+  const newBook = new Book(title, author, pages, publicationYear, readStatus);
   myLibrary.push(newBook);
   displayBooks();
 }
 
-/*  */
+/* Function to display books */
 function displayBooks() {
   libraryContainer.innerHTML = "";
 
@@ -32,19 +33,28 @@ function displayBooks() {
 
     // Add book details (title, author, etc.)
     bookCard.innerHTML = `
-        <h3>${book.title}</h3>
-        <p>Author: ${book.author}</p>
-        <p>Pages: ${book.pages}</p>
-                    <label for="read-status-${book.title}">Status:</label>
-         <select>id="read-status-${book.title}">
-                <option value="read" ${
-                  book.read ? "selected" : ""
-                }>Read</option>
-                <option value="not-read" ${
-                  !book.read ? "selected" : ""
-                }>Not Read</option>
-            </select>
-      `;
+        <div class="book-info">
+          <h3>${book.title}</h3>
+          <p>Author: ${book.author}</p>
+          <p>Pages: ${book.pages}</p>
+          <p>Publication Year: ${book.publicationYear}</p>
+          <select id="read-status-${book.title}">
+              <option value="read" ${
+                book.readStatus === "read" ? "selected" : ""
+              }>Read</option>
+              <option value="to-read" ${
+                book.readStatus === "to-read" ? "selected" : ""
+              }>To Read</option>
+              <option value="currently-reading" ${
+                book.readStatus === "currently-reading" ? "selected" : ""
+              }>Currently Reading</option>
+              <option value="did-not-finish" ${
+                book.readStatus === "did-not-finish" ? "selected" : ""
+              }>Did Not Finish</option>
+          </select>
+        </div>
+        <div class="book-cover"><img src="https://greenhousescribes.com/wp-content/uploads/2020/10/book-cover-generic.jpg"></div>
+    `;
 
     // Append to the library container
     libraryContainer.appendChild(bookCard);
@@ -52,7 +62,14 @@ function displayBooks() {
 }
 
 /* Tests */
-addBookToLibrary("The Dark", "Mark Boer", 321, true);
-addBookToLibrary("VSC History", "Radu Vida", 141, false);
-addBookToLibrary("Old World Jazz", "Andrea Redthorn", 243, true);
+addBookToLibrary("The Dark", "Mark Boer", 321, 2020, "read");
+addBookToLibrary("VSC History", "Radu Vida", 141, 2021, "to-read");
+addBookToLibrary(
+  "Old World Jazz",
+  "Andrea Redthorn",
+  243,
+  2019,
+  "currently-reading"
+);
+addBookToLibrary("CSS Secrets", "Cosimus Voss", 643, 2015, "did-not-finish");
 console.table(myLibrary);

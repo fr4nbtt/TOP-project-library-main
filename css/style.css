@@ -1,41 +1,64 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap");
 
 :root {
+  /* COLOR PALETTE */
+  --color-black: #1a1a1a;
+  --color-dark-red: #630000;
+  --color-light-tan: #e1c1b0;
+  --color-off-white: #eeebdd;
+
+  /* TYPOGRAPHY */
   font-family: Merriweather, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 main {
   padding: 1.25rem;
-  background-color: #d8b6a4;
+  background-color: var(--color-light-tan);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
 }
 
 #library-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
+  justify-items: center;
+  align-items: center;
 }
 
 .book-card {
-  background-color: #eeebdd;
-  padding: 1rem;
-  border-top: 5px solid #630000;
+  background-color: var(--color-off-white);
+  padding: 1rem 1.125rem;
+  border-top: 6px solid var(--color-dark-red);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  aspect-ratio: 16 / 9;
+  max-width: 500px;
+  max-height: 300px;
+}
+
+.book-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: start;
-  aspect-ratio: 16 / 9;
+  justify-content: space-between;
+}
+
+.book-cover img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .book-card h3 {
   margin: 0;
 }
-
-/* Current Color Palette 
-000000
-630000
-D8B6A4
-EEEBDD
-*/
