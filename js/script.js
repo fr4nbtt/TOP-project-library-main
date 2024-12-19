@@ -64,12 +64,6 @@ function displayBooks() {
 /* Tests */
 addBookToLibrary("The Dark", "Mark Boer", 321, 2020, "read");
 addBookToLibrary("VSC History", "Radu Vida", 141, 2021, "to-read");
-addBookToLibrary(
-  "Old World Jazz",
-  "Andrea Redthorn",
-  243,
-  2019,
-  "currently-reading"
-);
+addBookToLibrary("Old World", "Andrea Rhorn", 243, 2019, "currently-reading");
 addBookToLibrary("CSS Secrets", "Cosimus Voss", 643, 2015, "did-not-finish");
 console.table(myLibrary);
