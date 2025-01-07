@@ -71,3 +71,17 @@ h2 {
 .book-card h3 {
   margin: 0;
 }
+
+#book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--color-off-white);
+}
+
+.hidden {
+  display: none;
+}

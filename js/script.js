@@ -1,8 +1,5 @@
 "use strict";
 
-/* Selectors */
-const libraryContainer = document.querySelector("#library-container");
-
 /* Library array of book objects */
 const myLibrary = [];
 
@@ -24,6 +21,7 @@ function addBookToLibrary(title, author, pages, publicationYear, readStatus) {
 
 /* Function to display books */
 function displayBooks() {
+  const libraryContainer = document.querySelector("#library-container");
   libraryContainer.innerHTML = "";
 
   myLibrary.forEach((book) => {
@@ -60,6 +58,32 @@ function displayBooks() {
     libraryContainer.appendChild(bookCard);
   });
 }
+
+/* Event Listeners */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const addBookBtn = document.querySelector("#add-book-btn");
+  const bookFormContainer = document.querySelector("#add-book-form");
+  const bookForm = document.querySelector("#book-form");
+  const libraryContainer = document.querySelector("#library-container");
+
+  addBookBtn.addEventListener("click", () => {
+    bookFormContainer.classList.toggle("hidden");
+  });
+
+  bookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const publicationYear = document.querySelector("#publication-year").value;
+    const readStatus = document.querySelector("#read-status").value;
+
+    addBookToLibrary(title, author, pages, publicationYear, readStatus);
+    bookForm.reset();
+    bookFormContainer.classList.add("hidden");
+  });
+});
 
 /* Tests */
 addBookToLibrary("The Dark", "Mark Boer", 321, 2020, "read");
