@@ -74,6 +74,13 @@ function displayBooks() {
     readStatusSelect.addEventListener("change", (e) => {
       book.readStatus = e.target.value;
     });
+
+    // Add event listener to remove book
+    const removeBookBtn = bookCard.querySelector(".remove-book-btn");
+    removeBookBtn.addEventListener("click", (e) => {
+      const bookIndex = e.target.getAttribute("data-index");
+      removeBookFromLibrary(bookIndex);
+    });
   });
 }
 
