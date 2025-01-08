@@ -55,6 +55,7 @@ function displayBooks() {
                 <div class="book-cover">
           <img src="https://greenhousescribes.com/wp-content/uploads/2020/10/book-cover-generic.jpg" alt="Book Cover">
         </div>
+        <button class="remove-book-btn" data-index="${index}">Remove Book</button>
     `;
 
     // Append to the library container
