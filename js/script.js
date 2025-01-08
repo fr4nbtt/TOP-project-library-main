@@ -24,7 +24,7 @@ function displayBooks() {
   const libraryContainer = document.querySelector("#library-container");
   libraryContainer.innerHTML = "";
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     // Create a new element for each book
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
@@ -36,7 +36,8 @@ function displayBooks() {
           <p>Author: ${book.author}</p>
           <p>Pages: ${book.pages}</p>
           <p>Publication Year: ${book.publicationYear}</p>
-          <select id="read-status-${book.title}">
+          <label for="read-status-${index}">Read Status:</label>
+          <select id="read-status-${index}" class="read-status">
               <option value="read" ${
                 book.readStatus === "read" ? "selected" : ""
               }>Read</option>
@@ -51,21 +52,27 @@ function displayBooks() {
               }>Did Not Finish</option>
           </select>
         </div>
-        <div class="book-cover"><img src="https://greenhousescribes.com/wp-content/uploads/2020/10/book-cover-generic.jpg"></div>
+                <div class="book-cover">
+          <img src="https://greenhousescribes.com/wp-content/uploads/2020/10/book-cover-generic.jpg" alt="Book Cover">
+        </div>
     `;
 
     // Append to the library container
     libraryContainer.appendChild(bookCard);
+
+    // Add event listener to update read status
+    const readStatusSelect = bookCard.querySelector(`#read-status-${index}`);
+    readStatusSelect.addEventListener("change", (e) => {
+      book.readStatus = e.target.value;
+    });
   });
 }
 
 /* Event Listeners */
-
 document.addEventListener("DOMContentLoaded", () => {
   const addBookBtn = document.querySelector("#add-book-btn");
   const bookFormContainer = document.querySelector("#add-book-form");
   const bookForm = document.querySelector("#book-form");
-  const libraryContainer = document.querySelector("#library-container");
 
   addBookBtn.addEventListener("click", () => {
     bookFormContainer.classList.toggle("hidden");
