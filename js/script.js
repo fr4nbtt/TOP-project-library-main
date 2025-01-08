@@ -19,6 +19,12 @@ function addBookToLibrary(title, author, pages, publicationYear, readStatus) {
   displayBooks();
 }
 
+/* Function to handle the removal of book from library */
+function removeBookFromLibrary(index) {
+  myLibrary.splice(index, 1);
+  displayBooks();
+}
+
 /* Function to display books */
 function displayBooks() {
   const libraryContainer = document.querySelector("#library-container");
@@ -51,11 +57,13 @@ function displayBooks() {
                 book.readStatus === "did-not-finish" ? "selected" : ""
               }>Did Not Finish</option>
           </select>
+                  <button class="remove-book-btn" data-index="${index}">Remove Book</button>
         </div>
+
                 <div class="book-cover">
           <img src="https://greenhousescribes.com/wp-content/uploads/2020/10/book-cover-generic.jpg" alt="Book Cover">
         </div>
-        <button class="remove-book-btn" data-index="${index}">Remove Book</button>
+        
     `;
 
     // Append to the library container
